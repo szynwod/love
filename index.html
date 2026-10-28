@@ -1,412 +1,318 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <title>Nasza rocznica</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Google Fonts -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Razem Przez Świat • Marcel & Asia</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
-
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, rgba(245, 230, 255, 0.95), rgba(255, 233, 240, 0.95)), url('https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/86542158-a91f-4e12-b923-ee8d260da241') center/cover;
-      background-attachment: fixed;
-      font-family: "Montserrat", Arial, sans-serif;
-      position: relative;
-    }
-
-    /* Śnieg w tle */
-    .snow {
-      pointer-events: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image:
-        radial-gradient(2px 2px at 20px 20px, rgba(255,255,255,0.9) 50%, transparent 51%),
-        radial-gradient(3px 3px at 80px 40px, rgba(255,255,255,0.8) 50%, transparent 51%),
-        radial-gradient(2px 2px at 50px 90px, rgba(255,255,255,0.9) 50%, transparent 51%);
-      background-repeat: repeat;
-      background-size: 200px 200px;
-      animation: snowFall 15s linear infinite;
-      z-index: 1;
-    }
-
-    @keyframes snowFall {
-      0%   { transform: translateY(-100px); }
-      100% { transform: translateY(100px); }
-    }
-
-    .frame {
-      width: 90vw;
-      height: 90vh;
-      max-width: 650px;
-      max-height: 900px;
-      background: linear-gradient(to bottom, rgba(253, 253, 253, 0.96) 0%, rgba(250, 249, 247, 0.96) 100%);
-      border: 14px solid #111;
-      box-shadow: 0 10px 28px rgba(0,0,0,0.45);
-      padding: 28px 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      text-align: center;
-      color: #5b3b25;
-      position: relative;
-      z-index: 2;
-    }
-
-    .title-number {
-      font-size: 7vh;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-    }
-
-    .title-text {
-      font-size: 5vh;
-      font-family: "Pacifico", cursive;
-      margin-top: -6px;
-    }
-
-    .subtitle {
-      font-size: 2vh;
-      margin-top: 4px;
-      color: #7a5a3a;
-    }
-
-    .rows {
-      margin-top: 8px;
-      line-height: 1.35;
-      font-size: 2.4vh;
-    }
-
-    .row {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .row span.value {
-      font-weight: 700;
-      letter-spacing: 0.1em;
-    }
-
-    .small-note {
-      font-size: 1.8vh;
-      margin-top: 4px;
-      color: #8a6a47;
-    }
-
-    .heart {
-      width: 7vh;
-      height: 6.5vh;
-      background: #e32652;
-      position: relative;
-      margin: 0.8vh auto;
-      transform: rotate(-45deg);
-      animation: heartbeat 1.2s ease-in-out infinite, heartColor 3s ease-in-out infinite;
-      box-shadow: 0 0 16px rgba(227,38,82,0.55);
-      cursor: pointer;
-      transition: filter 0.3s ease;
-    }
-
-    .heart:hover {
-      filter: brightness(1.1);
-    }
-
-    .heart::before,
-    .heart::after {
-      content: "";
-      position: absolute;
-      width: 7vh;
-      height: 7vh;
-      background: #e32652;
-      border-radius: 50%;
-      top: -3.5vh;
-      left: 0;
-      animation: heartColor 3s ease-in-out infinite;
-    }
-    .heart::after {
-      left: 3.5vh;
-      top: 0;
-    }
-
-    @keyframes heartbeat {
-      0%   { transform: scale(0.9) rotate(-45deg); }
-      25%  { transform: scale(1.05) rotate(-45deg); }
-      45%  { transform: scale(1.12) rotate(-45deg); }
-      60%  { transform: scale(1.02) rotate(-45deg); }
-      100% { transform: scale(0.9) rotate(-45deg); }
-    }
-
-    @keyframes heartColor {
-      0%, 100% { background-color: #e32652; }
-      50% { background-color: #ff4373; }
-    }
-
-    .heart-icon {
-      font-size: 1.2vh;
-      margin-top: 2px;
-      animation: floatHearts 2s ease-in-out infinite;
-    }
-
-    @keyframes floatHearts {
-      0%, 100% { transform: translateY(0px); opacity: 1; }
-      50% { transform: translateY(-8px); opacity: 0.8; }
-    }
-
-    .divider {
-      width: 60%;
-      border-bottom: 1px solid #d1bfa9;
-      margin: 6px auto 4px;
-    }
-
-    .bottom-text {
-      font-family: "Pacifico", cursive;
-      font-size: 3vh;
-      margin-top: 4px;
-    }
-
-    .names-line {
-      font-size: 2.1vh;
-      margin-top: 6px;
-      letter-spacing: 0.16em;
-    }
-
-    .names-line .heart-small {
-      color: #e32652;
-      margin: 0 4px;
-      font-size: 2.1vh;
-    }
-
-    .hashtag {
-      font-size: 1.3vh;
-      color: rgba(139, 106, 71, 0.5);
-      margin-top: 8px;
-      font-style: italic;
-    }
-
-    .counter-label {
-      font-size: 1.5vh;
-      color: #9a7a5a;
-      margin-top: 6px;
-      font-weight: 300;
-      letter-spacing: 0.05em;
-    }
-
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: rgba(227, 38, 82, 0.8);
-      border: none;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.2rem;
-      z-index: 100;
-      transition: all 0.3s ease;
-    }
-
-    .theme-toggle:hover {
-      background: rgba(227, 38, 82, 1);
-      transform: scale(1.1);
-    }
-
-    body.dark-mode {
-      background: linear-gradient(135deg, rgba(42, 42, 58, 0.95), rgba(58, 42, 58, 0.95)), url('https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/86542158-a91f-4e12-b923-ee8d260da241') center/cover !important;
-      background-attachment: fixed;
-    }
-
-    body.dark-mode .frame {
-      background: linear-gradient(to bottom, rgba(45, 45, 45, 0.96) 0%, rgba(31, 31, 31, 0.96) 100%);
-      color: #f0e6d2;
-      border-color: #555;
-    }
-
-    body.dark-mode .subtitle,
-    body.dark-mode .counter-label,
-    body.dark-mode .small-note {
-      color: #c9b9a8;
-    }
-
-    body.dark-mode .divider {
-      border-bottom-color: #555;
-    }
-
-    @media print {
-      body {
-        background: white;
-      }
-      .snow {
-        display: none;
-      }
-      .frame {
-        box-shadow: none;
-        border-width: 0;
-        margin: 0;
-        padding: 20px;
-        background: white;
-      }
-      .heart {
-        animation: none !important;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .frame {
-        padding: 20px 16px;
-      }
-      .title-number {
-        font-size: 5vh;
-      }
-      .title-text {
-        font-size: 3.5vh;
-      }
-      .rows {
-        font-size: 2vh;
-      }
-    }
-
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+  <script src="assets/jquery.min.js"></script>
 </head>
-<body>
-  <div class="snow"></div>
+<body class="season-summer time-day">
 
-  <div class="frame">
-    <div>
-      <div class="title-number" id="yearsText">0</div>
-      <div class="title-text">rocznica</div>
-      <div class="subtitle">od początku naszej wspólnej przygody</div>
+  <!-- GLÓWNA SCENA Z ANIMACJĄ ŚWIATA I POSTACIAMI -->
+  <div id="worldContainer" class="world-container">
+    
+    <!-- Niebo z gradientem i słońcem / księżycem -->
+    <div id="skyLayer" class="layer sky-layer">
+      <div id="celestialBody" class="celestial-body sun">
+        <div class="celestial-glow"></div>
+        <div class="celestial-core"></div>
+        <div class="celestial-rays"></div>
+      </div>
+      <div id="cloudsContainer" class="clouds-container"></div>
     </div>
 
-    <div class="heart"></div>
+    <!-- Gwiazdy i spadające meteory na noc -->
+    <canvas id="starsCanvas" class="layer stars-canvas"></canvas>
 
-    <div>
-      <div class="counter-label">Wspólnie przeżyliśmy:</div>
-      <div class="rows">
-        <div class="row"><span class="value" id="monthsText">0</span><span>miesięcy</span></div>
-        <div class="row"><span class="value" id="weeksText">0</span><span>tygodni</span></div>
-        <div class="row"><span class="value" id="daysText">0</span><span>dni</span></div>
-        <div class="row"><span class="value" id="hoursText">0</span><span>godzin</span></div>
-        <div class="row"><span class="value" id="minutesText">0</span><span>minut</span></div>
-        <div class="row"><span class="value" id="secondsText">0</span><span>sekund</span></div>
+    <!-- Tła krajobrazu dla 4 pór roku (płynne przejścia) -->
+    <div class="layer landscape-layer">
+      <div id="bgSummer" class="landscape-bg bg-summer active"></div>
+      <div id="bgAutumn" class="landscape-bg bg-autumn"></div>
+      <div id="bgWinter" class="landscape-bg bg-winter"></div>
+      <div id="bgSpring" class="landscape-bg bg-spring"></div>
+      <div id="lightingOverlay" class="lighting-overlay"></div>
+    </div>
+
+    <!-- Cząsteczki pogodowe (płatki, liście, śnieg, świetliki, iskry wody) -->
+    <canvas id="particlesCanvas" class="layer particles-canvas"></canvas>
+
+    <!-- Postacie: Marcel i Asia idący za rękę -->
+    <div id="charactersStage" class="characters-stage">
+      <div id="coupleEntity" class="couple-entity walking" title="Kliknij nas! ❤️">
+        <!-- Cień na bruku -->
+        <div class="couple-shadow"></div>
+        
+        <!-- Duszek animacji chodu -->
+        <div class="couple-sprite-box">
+          <div class="couple-sprite"></div>
+        </div>
+
+        <!-- Serduszko przy kliknięciu / interakcji -->
+        <div id="loveBubble" class="love-bubble">
+          <span class="heart-icon">❤️</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Latarnia i elementy pierwszego planu -->
+    <div id="foregroundLayer" class="layer foreground-layer">
+      <div class="promenade-lantern" id="promenadeLantern">
+        <div class="lantern-light"></div>
+      </div>
+    </div>
+
+    <!-- Górny pasek nawigacji i statusu -->
+    <header class="top-nav">
+      <div class="brand">
+        <span class="brand-heart">💖</span>
+        <span class="brand-title">Razem Przez Świat</span>
       </div>
 
-      <div class="small-note">…i wciąż liczymy dalej <span class="heart-icon">♥</span></div>
+      <div class="environment-badge" id="envBadge" title="Aktualna pora roku i dnia">
+        <span class="env-icon" id="envSeasonIcon">☀️</span>
+        <span class="env-text" id="envSeasonText">Lato</span>
+        <span class="env-divider">•</span>
+        <span class="env-icon" id="envTimeIcon">☀️</span>
+        <span class="env-text" id="envTimeText">Dzień</span>
+      </div>
+
+      <div class="nav-actions">
+        <button id="btnSoundToggle" class="nav-btn sound-btn" title="Dźwięki natury & muzyka">
+          <span class="btn-icon">🔇</span>
+          <span class="btn-label">Dźwięki</span>
+        </button>
+        <button id="btnMemoryModal" class="nav-btn" title="Oryginalne zdjęcie & wspomnienie">
+          <span class="btn-icon">📸</span>
+          <span class="btn-label">Wspomnienie</span>
+        </button>
+        <button id="btnSettingsToggle" class="nav-btn" title="Zmień porę roku lub porę dnia">
+          <span class="btn-icon">✨</span>
+          <span class="btn-label">Świat</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- KARTA Z LICZNIKIEM CZASU I WIADOMOŚCIĄ (UMIESZCZONA U GÓRY, BY NIE ZASŁANIAĆ POSTACI) -->
+    <section class="love-dashboard" id="loveDashboard">
+      <div class="glass-card main-card">
+        
+        <!-- Pasek narzędzi karty: przycisk minimalizacji i pozycji -->
+        <div class="card-top-bar">
+          <div class="message-glow-badge">Dla Mojej Najważniejszej Osoby</div>
+          <div class="card-controls">
+            <button id="btnToggleCardPos" class="card-ctrl-btn" title="Przełącz pozycję (Góra / Dół)">
+              <span class="ctrl-icon">↕️</span>
+              <span class="ctrl-text">Pozycja</span>
+            </button>
+            <button id="btnToggleCardSize" class="card-ctrl-btn" title="Zwiń lub rozwiń licznik">
+              <span class="ctrl-icon" id="minimizeIcon">🔽</span>
+              <span class="ctrl-text" id="minimizeText">Zwiń</span>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Słynna wiadomość z efektem przetasowania (shuffleEffect) -->
+        <div class="user-message-container" title="Kliknij tekst, aby przetasować ponownie">
+          <h1 id="userMsg2" class="shuffle_text love-heading">Asiu jesteś dla mnie taką osobą...</h1>
+        </div>
+
+        <div class="collapsible-content" id="collapsibleCardContent">
+          <!-- Precyzyjny licznik czasu bycia razem -->
+          <div class="time-counter-grid">
+            <div class="counter-box">
+              <span class="counter-num" id="cntYears">0</span>
+              <span class="counter-lbl">Lat</span>
+            </div>
+            <div class="counter-box">
+              <span class="counter-num" id="cntMonths">0</span>
+              <span class="counter-lbl">Miesięcy</span>
+            </div>
+            <div class="counter-box">
+              <span class="counter-num" id="cntDays">0</span>
+              <span class="counter-lbl">Dni</span>
+            </div>
+            <div class="counter-box">
+              <span class="counter-num" id="cntHours">00</span>
+              <span class="counter-lbl">Godzin</span>
+            </div>
+            <div class="counter-box">
+              <span class="counter-num" id="cntMinutes">00</span>
+              <span class="counter-lbl">Minut</span>
+            </div>
+            <div class="counter-box highlight-box">
+              <span class="counter-num" id="cntSeconds">00</span>
+              <span class="counter-lbl">Sekund</span>
+            </div>
+          </div>
+
+          <!-- Pasek podsumowania i kolejna rocznica -->
+          <div class="summary-ribbon">
+            <div class="ribbon-item">
+              <span class="ribbon-icon">🗓️</span>
+              <span>Pierwsze spotkanie: <strong>24 sierpnia 2019</strong></span>
+            </div>
+            <div class="ribbon-item">
+              <span class="ribbon-icon">⏳</span>
+              <span>Łącznie razem: <strong id="totalDaysBadge">0</strong> pełnych dni</span>
+            </div>
+            <div class="ribbon-item">
+              <span class="ribbon-icon">🥂</span>
+              <span id="nextAnniversaryText">Kolejna rocznica za...</span>
+            </div>
+          </div>
+
+          <!-- Romantyczne myśli / cytaty -->
+          <div class="quote-slider">
+            <p id="romanticQuote" class="quote-text">
+              „Gdziekolwiek prowadzi nas droga, najważniejsze jest to, że idziemy nią trzymając się za ręce.”
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PANEL KONTROLI PÓR ROKU I DNIA (WYS Hemisphere / Menu) -->
+    <div id="controlsModal" class="controls-drawer">
+      <div class="drawer-header">
+        <h3>✨ Zmiana Świata i Pory Dnia</h3>
+        <button id="btnCloseControls" class="close-btn">&times;</button>
+      </div>
+
+      <div class="drawer-body">
+        
+        <div class="control-group">
+          <div class="group-label">Tryb działania:</div>
+          <div class="mode-toggle-pill">
+            <button id="modeAuto" class="pill-btn active">🌐 Czas Rzeczywisty (Auto)</button>
+            <button id="modeManual" class="pill-btn">🎨 Własny Wybór</button>
+            <button id="modeTour" class="pill-btn">🎬 Podróż w Czasie (Tour)</button>
+          </div>
+          <p class="mode-hint" id="modeHint">
+            W trybie automatycznym strona sama rozpoznaje aktualną porę roku i porę dnia według Twojego zegara!
+          </p>
+        </div>
+
+        <div class="control-group">
+          <div class="group-label">Pora roku:</div>
+          <div class="buttons-grid season-grid">
+            <button class="choice-btn" data-season="spring">
+              <span class="choice-icon">🌱</span>
+              <span class="choice-name">Wiosna</span>
+              <span class="choice-sub">Pastele, jeans & sakura</span>
+            </button>
+            <button class="choice-btn active" data-season="summer">
+              <span class="choice-icon">☀️</span>
+              <span class="choice-name">Lato</span>
+              <span class="choice-sub">Wakacyjny styl ze zdjęcia</span>
+            </button>
+            <button class="choice-btn" data-season="autumn">
+              <span class="choice-icon">🍂</span>
+              <span class="choice-name">Jesień</span>
+              <span class="choice-sub">Ciepłe karmelowe kurtki</span>
+            </button>
+            <button class="choice-btn" data-season="winter">
+              <span class="choice-icon">❄️</span>
+              <span class="choice-name">Zima</span>
+              <span class="choice-sub">Puchowe kurtki & getry</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="group-label">Pora dnia:</div>
+          <div class="buttons-grid time-grid">
+            <button class="choice-btn" data-time="dawn">
+              <span class="choice-icon">🌅</span>
+              <span class="choice-name">Wschód</span>
+              <span class="choice-sub">Złoty poranek</span>
+            </button>
+            <button class="choice-btn active" data-time="day">
+              <span class="choice-icon">☀️</span>
+              <span class="choice-name">Dzień</span>
+              <span class="choice-sub">Błękitne niebo</span>
+            </button>
+            <button class="choice-btn" data-time="sunset">
+              <span class="choice-icon">🌇</span>
+              <span class="choice-name">Zachód</span>
+              <span class="choice-sub">Ciepły zmierzch</span>
+            </button>
+            <button class="choice-btn" data-time="night">
+              <span class="choice-icon">🌙</span>
+              <span class="choice-name">Noc</span>
+              <span class="choice-sub">Księżyc & gwiazdy</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="group-label">Animacja spaceru:</div>
+          <div class="buttons-grid walk-grid">
+            <button id="btnWalkPromenade" class="choice-btn active">
+              <span class="choice-icon">🚶‍♂️🚶‍♀️</span>
+              <span class="choice-name">Spacer Promenadą</span>
+              <span class="choice-sub">Przechadzka wzdłuż brzegu</span>
+            </button>
+            <button id="btnWalkInfinite" class="choice-btn">
+              <span class="choice-icon">🌍</span>
+              <span class="choice-name">Podróż Przez Świat</span>
+              <span class="choice-sub">Niekończąca się wędrówka</span>
+            </button>
+            <button id="btnWalkPause" class="choice-btn">
+              <span class="choice-icon">⏸️</span>
+              <span class="choice-name">Zatrzymajmy Się</span>
+              <span class="choice-sub">Chwila na widok</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <div>
-      <div class="divider"></div>
-      <div class="bottom-text">na zawsze razem</div>
-      <div class="names-line">
-        TY &nbsp; I &nbsp; ASIA
-        <span class="heart-small">❤</span>
-        <span>23.08.2019 • Energylandia, Zator</span>
+    <!-- MODAL ZE ZDJĘCIEM I OPOWIEŚCIĄ -->
+    <div id="memoryModal" class="modal-backdrop">
+      <div class="modal-card">
+        <button id="btnCloseMemory" class="modal-close">&times;</button>
+        <div class="modal-header">
+          <h2>📸 Nasza Prawdziwa Chwila</h2>
+          <p class="modal-subtitle">Grecja, błękitna zatoka i uśmiech, od którego wszystko się zaczęło.</p>
+        </div>
+        
+        <div class="modal-compare-grid">
+          <div class="compare-item">
+            <div class="img-frame">
+              <img src="assets/original_photo.png" alt="Oryginalne zdjęcie Marcela i Asi">
+            </div>
+            <div class="img-caption">Nasze prawdziwe zdjęcie z podróży</div>
+          </div>
+          <div class="compare-item">
+            <div class="img-frame">
+              <img src="assets/couple_ghibli_art.jpg" alt="Artystyczna animowana wersja">
+            </div>
+            <div class="img-caption">Nasza animowana opowieść</div>
+          </div>
+        </div>
+
+        <div class="modal-letter">
+          <p>
+            <em>„Asiu, minęły już lata, odkąd stoimy ramię w ramię. Niezależnie od tego, czy wokół nas jest gorące lato, złota jesień, biała zima czy kwitnąca wiosna — każdy dzień u Twojego boku jest najwspanialszą przygodą mojego życia.”</em>
+          </p>
+          <div class="letter-sign">Marcel ❤️</div>
+        </div>
       </div>
-      <div class="hashtag">#naszahistoria</div>
     </div>
+
+    <!-- Pływające powiadomienie toast -->
+    <div id="toastNotification" class="toast-notification"></div>
+
   </div>
 
-  <button class="theme-toggle" id="themeBtn">🌙</button>
-
-  <script>
-    const start = new Date("2019-08-23T00:00:00");
-
-    function initTheme() {
-      const saved = localStorage.getItem('theme') || 'light';
-      if (saved === 'dark') {
-        document.body.classList.add('dark-mode');
-        document.getElementById('themeBtn').textContent = '☀️';
-      }
-    }
-
-    function toggleTheme() {
-      document.body.classList.toggle('dark-mode');
-      const isDark = document.body.classList.contains('dark-mode');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      document.getElementById('themeBtn').textContent = isDark ? '☀️' : '🌙';
-    }
-
-    function update() {
-      const now = new Date();
-      const diffMs = now - start;
-
-      const totalSeconds = Math.floor(diffMs / 1000);
-      const totalMinutes = Math.floor(diffMs / (1000 * 60));
-      const totalHours   = Math.floor(diffMs / (1000 * 60 * 60));
-      const totalDays    = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-      const totalWeeks   = Math.floor(totalDays / 7);
-      const totalMonths  = Math.floor(totalDays / 30.44);
-
-      document.getElementById("yearsText").textContent   = Math.floor(totalMonths / 12);
-      document.getElementById("monthsText").textContent  = totalMonths.toLocaleString("pl-PL");
-      document.getElementById("weeksText").textContent   = totalWeeks.toLocaleString("pl-PL");
-      document.getElementById("daysText").textContent    = totalDays.toLocaleString("pl-PL");
-      document.getElementById("hoursText").textContent   = totalHours.toLocaleString("pl-PL");
-      document.getElementById("minutesText").textContent = totalMinutes.toLocaleString("pl-PL");
-      document.getElementById("secondsText").textContent = totalSeconds.toLocaleString("pl-PL");
-    }
-
-    let lastConfettiTime = 0;
-    function createConfetti() {
-      const now = Date.now();
-      if (now - lastConfettiTime < 500) return;
-      lastConfettiTime = now;
-
-      for (let i = 0; i < 30; i++) {
-        const confetti = document.createElement('div');
-        const heartX = window.innerWidth / 2;
-        const heartY = window.innerHeight / 2;
-        confetti.style.position = 'fixed';
-        confetti.style.left = heartX + 'px';
-        confetti.style.top = heartY + 'px';
-        confetti.style.width = Math.random() * 6 + 4 + 'px';
-        confetti.style.height = confetti.style.width;
-        confetti.style.backgroundColor = ['#e32652', '#ff4373', '#ffb3c1'][Math.floor(Math.random() * 3)];
-        confetti.style.borderRadius = '50%';
-        confetti.style.pointerEvents = 'none';
-        confetti.style.animation = 'fall 2.5s ease-out forwards';
-        confetti.style.zIndex = '0';
-        document.body.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 2500);
-      }
-    }
-
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes fall {
-        to {
-          transform: translateY(100vh) rotate(360deg);
-          opacity: 0;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-
-    document.querySelector('.heart').addEventListener('click', createConfetti);
-    document.getElementById('themeBtn').addEventListener('click', toggleTheme);
-
-    initTheme();
-    update();
-    setInterval(update, 1000);
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
